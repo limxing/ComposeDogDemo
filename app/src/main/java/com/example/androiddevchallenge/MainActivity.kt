@@ -27,7 +27,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
-
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -77,23 +76,19 @@ fun MyApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "list") {
         composable("list") {
-
             DogList(navController)
         }
         composable(
             "detail/{dog}",
             arguments = listOf(navArgument("dog") { type = NavType.StringType })
         ) { backStackEntry ->
-
             DogDetail(gson.fromJson(backStackEntry.arguments?.getString("dog"), Dog::class.java))
         }
     }
-
 }
 
 @Composable
 fun DogDetail(dog: Dog) {
-
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Card(
             modifier = Modifier
@@ -109,7 +104,6 @@ fun DogDetail(dog: Dog) {
                     .fillMaxWidth()
                     .fillMaxHeight()
             )
-
         }
         Text(
             text = dog.name,
@@ -141,9 +135,7 @@ fun DogList(navController: NavController) {
 
                     }
                 }
-
             }
-
         }
     }
 }
@@ -163,7 +155,6 @@ fun DogItemView(dog: Dog, click: (Dog) -> Unit) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
             .clickable {
-
                 click(dog)
             }
             .fillMaxWidth()) {
@@ -191,16 +182,12 @@ fun DogItemView(dog: Dog, click: (Dog) -> Unit) {
                         maxLines = 1,
                         fontWeight = FontWeight.Bold
                     )
-
                 }
                 Text(text = "Age:${dog.age}", fontSize = 16.sp)
             }
-
         }
-
     }
 }
-
 
 @Preview("Light Theme", widthDp = 360, heightDp = 640)
 @Composable
