@@ -129,11 +129,10 @@ fun DogList(navController: NavController) {
         LazyColumn {
             items(dogs) { it ->
                 DogItemView(it) {
+                    val dogString = gson.toJson(it)
                     navController.navigate(
-                        "detail/${gson.toJson(it)}"
-                    ) {
-
-                    }
+                        "detail/$dogString}"
+                    ) {}
                 }
             }
         }
@@ -142,9 +141,8 @@ fun DogList(navController: NavController) {
 
 val String.drawableId: Int
     get() = MyApplication.application?.let {
-        it.resources?.getIdentifier(this, "drawable", it.packageName) ?: 0
+        it.resources.getIdentifier(this, "drawable", it.packageName)
     } ?: 0
-
 
 @Composable
 fun DogItemView(dog: Dog, click: (Dog) -> Unit) {
