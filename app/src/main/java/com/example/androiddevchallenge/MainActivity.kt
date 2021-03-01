@@ -133,7 +133,7 @@ fun DogList(navController: NavController) {
     val dogs = gson.fromJson(dogstring, Array<Dog>::class.java)
     Surface(color = teal200) {
         LazyColumn {
-            items(dogs) {
+            items(dogs) { it ->
                 DogItemView(it) {
                     navController.navigate(
                         "detail/${gson.toJson(it)}"
@@ -185,7 +185,7 @@ fun DogItemView(dog: Dog, click: (Dog) -> Unit) {
                 Row(verticalAlignment = Alignment.Bottom) {
                     Text(text = "Name:")
                     Text(
-                        text = "${dog.name}",
+                        text = dog.name,
                         color = Color.Black,
                         fontSize = 20.sp,
                         maxLines = 1,
@@ -210,7 +210,7 @@ fun LightPreview() {
     }
 }
 
-//@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
