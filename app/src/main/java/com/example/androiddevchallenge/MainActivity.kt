@@ -146,28 +146,15 @@ val String.drawableId: Int
 
 @Composable
 fun DogItemView(dog: Dog, click: (Dog) -> Unit) {
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
-            .clickable {
+    Card(modifier = Modifier.padding(8.dp).fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable {
                 click(dog)
-            }
-            .fillMaxWidth()) {
-            Card(
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(120.dp)
-                    .padding(10.dp), shape = shapes.large
-            ) {
+            }.fillMaxWidth()) {
+            Card(modifier = Modifier.width(120.dp).height(120.dp).padding(10.dp), shape = shapes.large) {
                 Image(
                     painter = painterResource(id = "ia_${dog.num}".drawableId),
                     contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight()
                 )
             }
             Column {
