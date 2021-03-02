@@ -26,5 +26,4 @@ class MyApplication : Application() {
         super.onCreate()
         application = this
     }
-
 }
