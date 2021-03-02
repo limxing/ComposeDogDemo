@@ -22,10 +22,9 @@ class MyApplication : Application() {
         var application: Application? = null
     }
 
-
     override fun onCreate() {
         super.onCreate()
         application = this
-
     }
+
 }
